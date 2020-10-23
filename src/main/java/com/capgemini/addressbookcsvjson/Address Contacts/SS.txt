@@ -1,0 +1,2 @@
+Contact [firstName=shashi, lastName=chandel, address=lachra, city=lachra, state=jhar, zip=835201, phoneNo=9895895659, email=chandel@gmail.com]
+Contact [firstName=shashi, lastName=chandel, address=d, city=d, state=d, zip=d, phoneNo=d, email=d]
