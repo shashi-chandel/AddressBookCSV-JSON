@@ -10,13 +10,13 @@ import java.util.Scanner;
 
 public class AddressBookMain {
 	Scanner sc = new Scanner(System.in);
-	AddressBookCSVService addressBookCSVService = new AddressBookCSVService();
+	AddressBookJSONService addressBookJsonService = new AddressBookJSONService();
 	private static List<Contact> addressList = new ArrayList<Contact>();
 	private static HashMap<String, List<Contact>> addressBookMap = new HashMap<String, List<Contact>>();
 	HashMap<Contact, String> personCityMap = new HashMap<Contact, String>();
 	HashMap<Contact, String> personStateMap = new HashMap<Contact, String>();
 	private String addressListName;
-	
+
 	public void setAddressListName(String listName) {
 		this.addressListName = listName;
 	}
@@ -30,7 +30,8 @@ public class AddressBookMain {
 		boolean isPresent = addressList.stream().anyMatch(obj -> obj.equals(contactObj));
 		if (isPresent == false) {
 			addressList.add(contactObj);
-			new AddressBookCSVService().writeContactToAddressBook(contactObj, addressListName);
+			System.out.println(addressListName);
+			new AddressBookJSONService().writeContactToAddressBook(contactObj, addressListName);
 			System.out.println("Contact added");
 			return true;
 		} else {
@@ -357,7 +358,7 @@ public class AddressBookMain {
 				break;
 			}
 			case 11: {
-				addressObj.addressBookCSVService.print();
+				addressObj.addressBookJsonService.print();
 				break;
 			}
 			case 12: {
