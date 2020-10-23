@@ -24,7 +24,7 @@ public class AddressBookCSVService {
 	private HashMap<String, List<Contact>> addressBookMap;
 
 	public AddressBookCSVService() {
-		HOME = "C:\\Users\\shashi7\\eclipse-workspace\\addressbook.fileio\\src\\main\\java\\com\\capgemini\\addressbook\\fileio\\Address Contacts";
+		HOME = "C:\\Users\\shashi7\\eclipse-workspace\\AddressBookCSV-JSON\\src\\main\\java\\com\\capgemini\\addressbookcsvjson\\Address CSV contacts";
 		addressBookMap = new HashMap<String, List<Contact>>();
 		readDataFromAddressBook();
 	}
@@ -40,14 +40,14 @@ public class AddressBookCSVService {
 					String[] nextRecord;
 					while ((nextRecord = csvReader.readNext()) != null) {
 						if (ctr != 0) {
-							String firstName = nextRecord[0];
-							String lastName = nextRecord[1];
-							String address = nextRecord[2];
-							String city = nextRecord[3];
-							String state = nextRecord[4];
-							String zip = nextRecord[5];
-							String phoneNo = nextRecord[6];
-							String email = nextRecord[7];
+							String address = nextRecord[0];
+							String city = nextRecord[1];
+							String email = nextRecord[2];
+							String firstName = nextRecord[3];
+							String lastName = nextRecord[4];
+							String phoneNo = nextRecord[5];
+							String state = nextRecord[6];
+							String zip = nextRecord[7];
 							Contact contact = new Contact(firstName, lastName, address, city, state, zip, phoneNo,
 									email);
 							contactList.add(contact);
@@ -88,7 +88,7 @@ public class AddressBookCSVService {
 			contactList.add(contactObj);
 			try {
 				beanToCsv.write(contactList);
-				writer.flush();
+				writer.close();
 			} catch (CsvDataTypeMismatchException | CsvRequiredFieldEmptyException e) {
 				e.printStackTrace();
 			}
